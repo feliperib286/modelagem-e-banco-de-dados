@@ -1,0 +1,107 @@
+atividade 1
+drop table if exists bairro;
+drop table if exists cidade;
+drop table if exists endereco;
+CREATE TABLE bairro (
+  idbairro INTEGER NOT NULL,
+  Cidade_idCidade INTEGER NOT NULL,
+  iDCIDADE INTEGER NOT NULL,
+  nome VARCHAR(20) NULL,
+  PRIMARY KEY(idbairro)
+);
+CREATE TABLE Cidade (
+  idCidade INTEGER NOT NULL,
+  nome VARCHAR(40) NULL,
+  uf  VARCHAR(2) NULL,
+  PRIMARY KEY(idCidade)
+);
+CREATE TABLE endereco(
+  idendereco INTEGER NOT NULL,
+  bairro_idbairro INTEGER NOT NULL,
+  logradouro VARCHAR(30) NULL,
+  numero INTEGER NULL,
+  cep INTEGER NULL,
+  PRIMARY KEY(idendereco)
+);
+
+atividade 2
+
+CREATE TABLE bairro (
+  idbairro INTEGER NOT NULL,
+  Cidade_idCidade INTEGER NOT NULL,
+  iDCIDADE INTEGER NOT NULL,
+  nome VARCHAR(20) NULL,
+  PRIMARY KEY(idbairro)
+);
+
+CREATE TABLE Cidade (
+  idCidade INTEGER NOT NULL,
+  nome VARCHAR(40) NOT NULL,
+  uf  VARCHAR(2) NULL,
+  PRIMARY KEY(idCidade)
+);
+
+CREATE TABLE endereco (
+  idendereco INTEGER NOT NULL,
+  bairro_idbairro INTEGER NOT NULL,
+  logradouro VARCHAR(30) NULL,
+  numero INTEGER NULL,
+  cep INTEGER NULL,
+  PRIMARY KEY(idendereco)
+);
+
+atividade 3
+
+CREATE TABLE tarefa (
+  idtarefa INTEGER NOT NULL,
+  tarefa_idtarefapai INTEGER  NOT NULL,
+  nome VARCHAR(30) NULL,
+  valor FLOAT NULL,
+  PRIMARY KEY(idtarefa)
+);
+
+atividade4
+
+CREATE TABLE vaga (
+  nome VARCHAR(10) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY(nome)
+);
+
+CREATE TABLE veiculo (
+  placa CHAR(7) NOT NULL,
+  modelo VARCHAR(20) NULL,
+  marca VARCHAR(20) NULL,
+  PRIMARY KEY(placa)
+);
+
+CREATE TABLE veiculo_has_vaga (
+  veiculo_placa CHAR(7) NOT NULL,
+  vaga_nome VARCHAR(10) NOT NULL,
+  valor FLOAT NULL,
+  inicio TIMESTAMP NULL,
+  fim TIMESTAMP NULL,
+  PRIMARY KEY(veiculo_placa, vaga_nome),
+  INDEX veiculo_has_vaga_FKIndex1(veiculo_placa),
+  INDEX veiculo_has_vaga_FKIndex2(vaga_nome)
+);
+
+atividade 5
+CREATE TABLE imovel (
+  idimovel INTEGER NOT NULL,
+  idproprietario INTEGER NOT NULL,
+  idiquilino INTEGER NOT NULL,
+  descricao VARCHAR(50) NULL,
+  PRIMARY KEY(idimovel)
+	
+ );
+
+CREATE TABLE Pessoas (
+  idPessoas INTEGER NOT NULL,
+  nome VARCHAR(40) NULL,
+  PRIMARY KEY(idPessoas)
+);
+
+
+
+
+
