@@ -44,3 +44,39 @@ from tbcurso
 group by unidade
 having count(*) = 3
 order by unidade asc;
+-------------------------------------------------
+6
+select unidade,turno,count (curso)
+from tbcurso
+group by unidade, turno
+order by unidade asc;
+--------------------------------------------
+7
+select unidade,turno,count (curso)
+from tbcurso
+group by unidade, turno
+having count(*) = 5
+order by unidade asc;
+----------------------------------------------
+8
+select unidade,turno,count (curso)
+from tbcurso
+where municipio = 'São José dos Campos'
+group by unidade, turno
+order by unidade asc;
+--------------------------------------------
+9
+select unidade,turno, sum(vaga)			
+from tbcurso
+where municipio = 'São José dos Campos'
+group by unidade, turno
+order by unidade asc;
+--------------------------
+10
+select turno,sum(vaga)
+from tbcurso
+group by  turno
+order by turno asc;
+
+
+
