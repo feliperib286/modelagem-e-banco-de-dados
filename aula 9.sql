@@ -61,7 +61,28 @@ update tbmatricula as m
 set nota = nota + 5
 from tbdisciplina as d
 where m.iddisciplina = d.id and d.nome ='Inglês';
+--Exercicio 7
+update tbmatricula as m 
+set nota = 0.0 
+from tbaluno as a, tbdisciplina as d
+where a.id = m.idaluno and d.id = m.iddisciplina 
+and nota is null;
 
+--Exercicio 8
+delete from tbmatricula
+where nota = 0.0;
+
+--Exercicio 9
+delete from tbmatricula as m   
+using tbaluno as a, tbdisciplina as d
+where a.id = m.idaluno and d.id = m.iddisciplina 
+and a.nome = 'Luiz carlos' and d.nome = 'Ingles I';
+
+--Exercicio 10
+delete from tbmatricula;
+
+
+Consulta
 select d.nome, a.nome, nota from tbaluno as a,
 tbmatricula as m,tbdisciplina as d 
 where a.id = m.idaluno and m.iddisciplina = d.id;
