@@ -1,0 +1,84 @@
+-- atividade 2 criando a tabela
+drop table if exists filmes;
+drop table if exists usuario;
+drop table if exists alugados;
+
+CREATE TABLE filmes (
+  idfilmes INTEGER NOT NULL,
+  titulo VARCHAR NOT NULL,
+  genero VARCHAR NOT NULL,
+  PRIMARY KEY(idfilmes)
+);
+
+CREATE TABLE usuario (
+  idcpf BIGINT  NOT NULL ,
+  nome VARCHAR(255) NOT NULL,
+  celular VARCHAR(15) NOT NULL,
+  PRIMARY KEY(idcpf)
+);
+
+CREATE TABLE alugados(
+  usuario_idcpf bigint not null,
+  filmes_idfilmes INTEGER NOT NULL,
+  PRIMARY KEY(usuario_idcpf, filmes_idfilmes)
+);
+-- Atividade 3 Inserindo dados 
+
+insert into usuario (idcpf, nome, celular)
+values (12345678900, 'Ana Oliveira', '(11)98765-4321'),
+(98765432100,'João Silva','(21)91234-5678'),
+(45678912300, 'Maria Santos','(31)99876-5432'),
+(65432198700,'Pedro Costa','(41)97654-3210');
+
+insert into filmes (idfilmes,titulo, genero)
+values(101,'Vingadores: Ultimato','Ação'),
+(102,'Interestelar','Ficção Científica'),
+(103,'O Senhor dos Anéis','Fantasia'),
+(104,'Matrix','Ficção Científica');
+
+--Inserir dados na tabela de relacionamento
+
+insert into alugados(usuario_idcpf,filmes_idfilmes)
+values
+(12345678900,101),
+(98765432100,102),
+(45678912300,103),
+(12345678900,103),
+(98765432100,104),
+(65432198700,101),
+(45678912300,104);
+
+
+-- Atividade 4 Lista de todos os Registros Armazenados
+
+SELECT 
+	usuario.idcpf as "CPF",
+	usuario.nome as "Nome",
+	usuario.celular as "Celular",
+	filmes.idfilmes as "ID_Filme",
+	filmes.titulo as "Titulo",
+	filmes.genero as "Genero"
+	from usuario, filmes, alugados
+	where filmes.idfilmes = alugados.filmes_idfilmes
+	and usuario.idcpf=alugados.usuario_idcpf
+
+	-- Atividade 5 Consultando somente O Senhor dos Anéis
+SELECT 
+	usuario.nome as "Nome",
+	filmes.titulo as "Titulo"	
+from 
+	filmes, usuario,alugados
+where
+	filmes.titulo = 'O Senhor dos Anéis'
+	and filmes.idfilmes = alugados.filmes_idfilmes
+	and usuario.idcpf=alugados.usuario_idcpf;
+	
+
+  select *from  usuario
+
+
+
+
+
+
+
